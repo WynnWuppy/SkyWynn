@@ -1,0 +1,51 @@
+/// BinarySearch.cpp : 定義主控台應用程式的進入點。
+//
+
+#include <iostream>
+using namespace std;
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{
+	int n = 100;
+	int *i;
+	i = new int[n];
+
+	int middle;
+	int search;
+	printf("Please enter how many numbers you want to make:");
+	scanf("%d", &n);
+
+	printf("Please tell me the numbers:");
+	for (int b = 0; b<n; b++)
+		scanf("%d", &i[b]);
+
+	printf("Tell me what number you want to search:");
+	scanf("%d", &search);
+
+	int high = n - 1, low = 0;
+	while (high >= low){
+		middle = (high + low) / 2;
+
+		if (search == i[middle]) {
+			printf("Your search is at %d \n", middle);
+			break;
+		}
+
+		else if (search>i[middle]){
+			low = middle + 1;
+		}
+
+		else{
+			high = middle - 1;
+		}
+
+	}
+	if (high<low)printf("The number doesn't exist. \n");
+
+	
+	delete[] i;
+	
+	return 0;
+}
